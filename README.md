@@ -11,7 +11,7 @@ A simple and stylish Rock Paper Scissors game built with HTML, CSS, and JavaScri
 ## How to Play
 
 1. Clone the repository.
-2. Open the `index.html` file in a web browser.
+2. Open the file in a web browser.
 3. Click on your choice of rock, paper, or scissors.
 4. See the computer's choice and find out the winner.
 
