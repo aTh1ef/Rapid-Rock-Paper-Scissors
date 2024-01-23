@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+
+<html
+ 
+lang="en">
+
+<head>
+
+  
+<meta
+ 
+charset="UTF-8">
+
+  
+<meta
+ 
+name="viewport"
+ 
+content="width-device-width, initial-scale=1.0">
+
+  
+<title>Rock Paper Scissors ⚔️</title>
+
+    
+<style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      display: flex;
+      flex-direction: column; /* Changed to column layout */
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: linear-gradient(to right, #f0f0f0, #e0e0e0);
+      overflow: hidden;
+    }
+
+    h1 {
+      color: #2f2121;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+      font-size: 3rem; /* Reduced font size */
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 40px;
+    }
+
+    @keyframes shake {
+      10%, 90% {
+        transform: translateX(-5px);
+      }
+    }
+
+    button {
+      border: none;
+      border-radius: 0; /* Removed button roundness */
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(to right, #4a4a4a, #333);
+      color: #fff;
+      font-size: 1.5rem; /* Increased button font size */
+      cursor: pointer;
+      transition: transform 0.2s ease-in-out;
+      margin: 20px;
+    }
+
+    button:hover {
+      transform: scale(1.1);
+    }
+
+    .choice-icon {
+      font-size: 4rem;
+      margin-bottom: 10px;
+      animation: bounce 0.5s ease-in-out;
+    }
+
+    @keyframes bounce {
+      0% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-5px);
+      }
+      100% {
+        transform: translateY(0);
+      }
+    }
+
+    #result {
+      font-size: 2rem;
+      text-align: center;
+      margin-top: 50px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .win-text {
+      color: #4caf50;
+      text-shadow: 1px 1px 3px rgba(0, 255, 0, 0.4);
+    }
+
+    .lose-text {
+      color: #f44336;
+      text-shadow: 1px 1px 3px rgba(255, 0, 0, 0.4);
+    }
+
+    .tie-text {
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Rock Paper Scissors ⚔️</h1>
+
+  <button onclick="playGame('rock')">
+    <span class="choice-icon">✊</span>
+    Rock
+  </button>
+  <button onclick="playGame('paper')">
+    <span class="choice-icon">✋</span>
+    Paper
+  </button>
+  <button onclick="playGame('scissors')">
+    <span class="choice-icon">✌️</span>
+    Scissors
+  </button>
+
+  <p id="result"></p>
+
+  <script>
+    function playGame(playerChoice) {
+        const choices = ['rock', 'paper', 'scissors'];
+        const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+        let result;
+
+        if (playerChoice === computerChoice) {
+            result = `It's a tie! <span class="tie-text"></span>`;
+        } else if (
+            (playerChoice === 'rock' && computerChoice === 'scissors') ||
+            (playerChoice === 'paper' && computerChoice === 'rock') ||
+            (playerChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+            result = `You win! <span class="win-text"></span>`;
+        } else {
+            result = `You lose! <span class="lose-text"></span>`;
+        }
+
+        document.getElementById('result').innerHTML = `You chose ${playerChoice}, computer chose ${computerChoice}. ${result}`;
+        
+    }
+</script>
+
+</body>
+</html>
